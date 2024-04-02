@@ -9,6 +9,7 @@ const Catalog = () => {
   const [arrayChanged, setArrayChanged] = useState(false);
 
   useEffect(() => {
+    /*
     fetch("http://localhost:9090/catalog", {
       method: "POST",
       headers: {
@@ -19,7 +20,7 @@ const Catalog = () => {
       .then((response) => response.json())
       .then((data) => {
         setQuery(data);
-      });
+      });*/
   }, []);
 
   const handleClick = () => {
@@ -30,6 +31,20 @@ const Catalog = () => {
     }
     setCounter(prevCounter => prevCounter + 1);
     setArrayChanged(!arrayChanged);
+
+    //Test additions 4/2/24
+    fetch("http://localhost:9090/catalog", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ test: 1 }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setQuery(data);
+      });
+
   };
 
   const handleClear = () => {
@@ -74,6 +89,7 @@ const Catalog = () => {
     const handleClick = () => {
       const randomColor = getRandomColor();
       setButtonColor(randomColor);
+
     };
 
     useEffect(() => {
