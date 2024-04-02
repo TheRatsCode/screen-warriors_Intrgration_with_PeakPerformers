@@ -53,6 +53,12 @@ router.get("/", async (req, res) => {
 //Get all entries of the database
 router.post("/", async (req, res) => {
     //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });
+    const reqBody = req.body.test
+    if(reqBody == 1) {
+        console.log("This is when tag 1 vale == 1");
+        const wasd = await House.find( {structure_type: "house"}).limit(3);
+        res.status(201).json(wasd);
+    }
     try {
         const wasd = await House.find();
         //const wasd2 = await House.findOne({ structure_id: 4});
