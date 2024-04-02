@@ -27,3 +27,32 @@ export const Element = styled.div`
     margin: 10px;
     border: 2px solid black;
 `;
+
+
+
+///LOGAN ADDED
+
+export const CatalogButton = styled.button`
+#colorButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+`;
+
+/*
+export const CatalogButton = styled.button`
+
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+`;
+*/
