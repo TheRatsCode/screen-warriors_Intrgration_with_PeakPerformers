@@ -1,35 +1,3 @@
-/*
-const express = require('express')
-const router = express.Router()
-
-//GEt all
-router.get("/", (req, res) => {
-    res.send('Hello World')
-})
-//Get one
-router.get("/:id", (req, res) => {
-    
-})
-//creating one
-router.post("/", (req, res) => {
-    
-})
-//update one //Instead of PUT
-router.patch("/:id", (req, res) => {
-    
-})
-//deleting one
-router.delete("/:id", (req, res) => {
-    req.params
-})
-
-module.exports = router
-*/
-
-
-
-
-
 
 const express = require('express')
 const router = express.Router()
@@ -65,10 +33,6 @@ router.post("/", async (req, res) => {
 })
 //Get one
 //Note /:id --> indicates taht it is a parameter
-/*
-router.get("/:id", (req, res) => {
-    
-})*/
 /*
 router.get("/:id", (req, res) => {
     
@@ -127,26 +91,5 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
     //req.params
 })
-
-
-
-
-/*
-router.post("/:id", async (req, res) => {
-    //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });
-    try {
-        const plzID = (req.params.id).valueOf();
-        console.log("HEHE");
-        console.log(plzID);
-        const wasd = await House.findOne({structure_id: plzID});
-        //const wasd2 = await House.findOne({ structure_id: 4});
-        //const testArray = [wasd, wasd2]
-        res.status(201).json(wasd);
-        //res.status(201).json(wasd);
-    }catch(err) {
-        res.status(400).json( { message: err.message } )
-    }
-})
-*/
 
 module.exports = router

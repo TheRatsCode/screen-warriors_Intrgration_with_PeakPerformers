@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 mongoose.connect("mongodb+srv://lhuber:PandasAce123@crudtesting.dxxcmnk.mongodb.net/"); //For some reasons save in the collection called "test"
-
+/*
 //Logan Huber's Code of Suffering :)
 //Create Structure schema for House Entry
 const houseSchema = new mongoose.Schema({
@@ -13,7 +13,7 @@ const houseSchema = new mongoose.Schema({
     images: { type: Array, items: {type: String, uniqueItems: true}},
     tags: { type: Array, items: {type: String, uniqueItems: true}},
     files: { type: Array, items: {type: String, uniqueItems: true}}
-});
+});*/
 //Create Structure schema for Object
 const objectSchema = new mongoose.Schema({
     structure_id: { type: Number, min: 1, max: 9999, required: true },
@@ -27,13 +27,26 @@ const objectSchema = new mongoose.Schema({
 
 
 //create a house model and creating an Object Model
-const House = mongoose.model("Houses", houseSchema);
+//const House = mongoose.model("Houses", houseSchema);
 const Object = mongoose.model("Objects", objectSchema);
 const app = express(); //Create route to create a Collects group
 app.use(cors());
 app.use(express.json())
 
 
+/*
+///Section for callling Router / Midddle ware shit
+const catalogRouter = require('./routes/catalog') //Testing for blogs
+//app.use('/catalog', catalogRouter) //So whenever localhost:9090/catalog or other subnets /catalog/tester will be called goes here
+*/
+const catalogRouter = require('./routes/catalog')
+const blogsRouter = require('./routes/blogs') //Testing for blogs
+//app.use('/blogs', blogsRouter)
+
+
+
+///Section for callling Router / Midddle ware shit
+/*
 //create route to create a OBJECT 
 app.get("/blogs/test", async(req, res) => {
     const obj = new Object({
@@ -66,10 +79,10 @@ app.get("/blogs/test", async(req, res) => {
 } catch (err) {
     console.log(err);}
 });
+*****/
 
 
-
-
+/*
 
 //create route to create a OBJECT 
 app.get("/createo", async(req, res) => {
@@ -88,25 +101,38 @@ app.get("/createo", async(req, res) => {
     console.log(err);}
 });
 
+*/
 
 
-
-//Server starts listening //9090 //orig 3000
+//Server starts listening //9090 //orig 3000 //9090
 app.listen(9090, function() {
     console.log("Server is listening at port 9090"); //9090
 });
+app.use('/catalog', catalogRouter)
+app.use('/blogs', blogsRouter)
+//app.use('/catalog', catalogRouter)
 
-
+/*
+//was /info
+//app.get('*') --> the .js file path to route the call to
 //Another test for sending data to client WORKS FOR STRing
-app.post('/info', async (req, res) => { //orig no ASYNC //WAS POST --? get
+app.post('/blogs', async (req, res) => { //orig no ASYNC //WAS POST --? get
     //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });////
     const wasd = await House.findOne({ structure_type: "house"});
  
     console.log({data : wasd});
     const weee = wasd._id.toString(); //+ oii; //let
     console.log(weee);
+    //console.log(req.params.id)
 
-    res.send({data : weee});
+    //wasd
+    //if()
+    //res.send({data : wasd});
+
+    //below work
+    //res.send({data : weee});
+    //let asdw = req.body.
+    res.send({data : "just blogs"});
 });
 
 ///////////////////1111111111111111111111111111111111
@@ -163,3 +189,24 @@ for (let i = 1; i <= 10; i++) {
 } catch (err) {
     console.log(err);}
 });
+
+
+
+////TEST with pulling an entry -->
+//Another test for sending data to client WORKS FOR STRing
+
+//https://masteringjs.io/tutorials/express/post
+app.post('/oneEntry', async (req, res) => { //orig no ASYNC //WAS POST --? get
+    //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });////
+    const wasd = await House.findOne({ structure_type: "house"});
+
+    console.log({data : wasd});
+
+    const weee = wasd._id.toString(); //+ oii; //let
+    console.log(weee);
+
+    res.send({data : weee});
+});
+
+
+*/
